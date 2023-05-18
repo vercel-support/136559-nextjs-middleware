@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import styles from '../../styles/Home.module.css';
 import moment from 'moment';
 import { useRouter } from 'next/router';
 
@@ -7,14 +8,18 @@ function Home({ now, nowCached, slug }) {
   // const { slug } = router.query
 
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <p>
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          Welcome to <a href="https://nextjs.org">Next.js!</a>
+        </h1>
+
+        <p className={styles.description}>
           Timestamp from /api/time generated{' '}
           <code className={styles.code}>{router.asPath}</code> at{' '}
           <code className={styles.code}>
@@ -25,6 +30,10 @@ function Home({ now, nowCached, slug }) {
           </code>
           .
         </p>
+        {/* <p className={styles.description}>
+          Timestamp from /api/time-with-cache generated <code className={styles.code}>{router.asPath}</code> at {' '}
+          <code className={styles.code}>{moment(nowCached).format()} <span style={{fontSize: 'xx-small'}}>({moment(nowCached).fromNow()} [{(Date.now() - nowCached) / 1000} seconds])</span></code>.
+        </p> */}
 
         <div style={{ textAlign: 'left', width: '100%' }}>
           router.isFallback:
